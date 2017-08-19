@@ -8,7 +8,9 @@ public class Projectile : MonoBehaviour {
 		Destroy (gameObject);
 	}
 
-	void OnCollisionEnter(){
+	void OnCollisionEnter(Collision collision){
+		print (collision);
 		Destroy (gameObject);
+
 	}
 }
