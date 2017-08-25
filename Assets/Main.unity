@@ -150,7 +150,7 @@ MonoBehaviour:
   - {fileID: 362254875}
   alien: {fileID: 1655247324895932, guid: 9cbe977102b0447d3a15e720dad7df99, type: 2}
   maxAliensOnscreen: 10
-  totalAliens: 10
+  totalAliens: 100
   minSpawnTime: 0
   MaxSpawnTime: 3
   aliensPerSpawn: 1
@@ -867,6 +867,7 @@ GameObject:
   - component: {fileID: 645586851}
   - component: {fileID: 645586850}
   - component: {fileID: 645586849}
+  - component: {fileID: 645586854}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -944,6 +945,19 @@ Transform:
   m_Father: {fileID: 585107386}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
+--- !u!114 &645586854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 645586848}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9efe26825c6d3b24aac340ea97076054, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shakeDecay: 0.02
+  intensity: 0.3
 --- !u!4 &740481827 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 7f78b096b427d419f9918e4ae4fc4aec, type: 3}
@@ -1361,6 +1375,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!136 &930165020
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 930165014}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 2.08
+  m_Height: 0.24
+  m_Direction: 1
+  m_Center: {x: -1.61, y: 3.58, z: 0}
 --- !u!1 &976970208
 GameObject:
   m_ObjectHideFlags: 0
@@ -1787,6 +1814,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114261467877109556, guid: b5448122e50d84c70bd3a736fa87f480,
+        type: 2}
+      propertyPath: hitForce.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4841576925328572, guid: b5448122e50d84c70bd3a736fa87f480, type: 2}
       propertyPath: m_LocalPosition.x
       value: -4.9
@@ -1899,6 +1931,26 @@ Prefab:
       propertyPath: bodyAnimator
       value: 
       objectReference: {fileID: 930165016}
+    - target: {fileID: 114261467877109556, guid: b5448122e50d84c70bd3a736fa87f480,
+        type: 2}
+      propertyPath: hitForce.Array.data[0]
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114261467877109556, guid: b5448122e50d84c70bd3a736fa87f480,
+        type: 2}
+      propertyPath: hitForce.Array.data[1]
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114261467877109556, guid: b5448122e50d84c70bd3a736fa87f480,
+        type: 2}
+      propertyPath: hitForce.Array.data[2]
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114261467877109556, guid: b5448122e50d84c70bd3a736fa87f480,
+        type: 2}
+      propertyPath: marineBody
+      value: 
+      objectReference: {fileID: 930165018}
     m_RemovedComponents:
     - {fileID: 54913880205598410, guid: b5448122e50d84c70bd3a736fa87f480, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: b5448122e50d84c70bd3a736fa87f480, type: 2}

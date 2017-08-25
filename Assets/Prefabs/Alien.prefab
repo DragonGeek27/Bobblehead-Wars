@@ -113,7 +113,7 @@ GameObject:
   - component: {fileID: 4541207309206114}
   - component: {fileID: 33578668852688414}
   - component: {fileID: 23474845939131244}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -236,7 +236,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4898480653437312}
   - component: {fileID: 95330180260698688}
-  m_Layer: 0
+  - component: {fileID: 54526982425129758}
+  - component: {fileID: 135578074696920224}
+  - component: {fileID: 114565545150016634}
+  m_Layer: 12
   m_Name: BobbleEnemy-Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1187,6 +1190,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!54 &54526982425129758
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1363924006406038}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!95 &95330180260698688
 Animator:
   serializedVersion: 3
@@ -1234,6 +1252,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   navigationUpdate: 0.5
+  OnDestroy:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  head: {fileID: 54526982425129758}
+  isAlive: 1
+--- !u!114 &114565545150016634
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1363924006406038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb1222dfb42a548cfb5a506c938b2982, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destructTime: 3
 --- !u!135 &135336689919889314
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -1244,8 +1281,20 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 2.52
+  m_Radius: 2.63
   m_Center: {x: 0.34, y: 2.54, z: 0.57}
+--- !u!135 &135578074696920224
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1363924006406038}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.03
+  m_Center: {x: 0, y: 0, z: 0.02}
 --- !u!137 &137122881756897736
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

@@ -32,6 +32,10 @@ public class GameManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if(player==null){
+			return;
+		}
+	
 		currentSpawnTime += Time.deltaTime;
 		currentUpgradeTime += Time.deltaTime;
 
@@ -85,9 +89,18 @@ public class GameManager : MonoBehaviour {
 						Vector3 targetRotation = new Vector3(player.transform.position.x, newAlien.transform.position.y, player.transform.position.z);
 						newAlien.transform.LookAt(targetRotation);
 
+						alienScript.OnDestroy.AddListener (AlienDestroyed);
+
 				}
 			}
 		}
 	}
 }
+
+	public void AlienDestroyed(){
+		aliensOnScreen -= 1;
+		totalAliens -= 1;
+	}
+
+
 }

@@ -62,6 +62,7 @@
      <Compile Include="Assets\Scripts\Rotator.cs" />
      <Compile Include="Assets\Scripts\SoundManager.cs" />
      <Compile Include="Assets\Scripts\Upgrade.cs" />
+     <Compile Include="Assets\SelfDestruct.cs" />
  <Reference Include="Facebook.Unity.Settings">
  <HintPath>/Users/michaelhardin/Developer/Unity/Bobblehead_Wars/Library/FacebookSDK/Facebook.Unity.Settings.dll</HintPath>
  </Reference>

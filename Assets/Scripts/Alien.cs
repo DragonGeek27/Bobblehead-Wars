@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 
 public class Alien : MonoBehaviour {
 
@@ -10,6 +11,11 @@ public class Alien : MonoBehaviour {
 
 	public float navigationUpdate;
 	private float navigationTime;
+	public UnityEvent OnDestroy;
+
+	public Rigidbody head;
+	public bool isAlive = true;
+
 
 	// Use this for initialization
 	void Start () {
@@ -17,17 +23,39 @@ public class Alien : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		navigationTime += Time.deltaTime;
-		if (navigationTime > navigationUpdate) {
-			agent.destination = target.position;
-			navigationTime = 0;
+	void Update ()	{
+		if (isAlive) {
+			navigationTime += Time.deltaTime;
+			if (navigationTime > navigationUpdate) {
+				agent.destination = target.position;
+				navigationTime = 0;
+			}
 		}
 	}
 
 	void OnTriggerEnter(Collider other){
-		Destroy (gameObject);
-		SoundManager.Instance.PlayOneShot (SoundManager.Instance.alienDeath);
+		if(isAlive){
+			Die ();
+			SoundManager.Instance.PlayOneShot (SoundManager.Instance.alienDeath);
+		}
+
+	}
+
+
+	public void Die() {
+		isAlive = false;
+		head.GetComponent<Animator>().enabled = false;
+		head.isKinematic = false;
+		head.useGravity = true;
+		head.GetComponent<SphereCollider>().enabled = true;
+		head.gameObject.transform.parent = null;
+		head.velocity = new Vector3(0, 26.0f, 3.0f);
+
+		OnDestroy.Invoke();
+		OnDestroy.RemoveAllListeners();
+		SoundManager.Instance.PlayOneShot(SoundManager.Instance.alienDeath);
+		head.GetComponent<SelfDestruct> ().Initiate ();
+		Destroy(gameObject);
 	}
 
 }
